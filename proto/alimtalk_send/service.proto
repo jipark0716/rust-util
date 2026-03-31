@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package alimtalk_send;
+
+message Request {
+  string id = 1;
+}

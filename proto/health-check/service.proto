@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package health_check;
+
+message Request {}
+
+message Response {
+    uint64 id1 = 1;
+    uint64 id2 = 2;
+    oneof payload {
+        SuccessResponse success = 3;
+        FailResponse fail = 4;
+    }
+}
+
+message SuccessResponse {}
+
+message FailResponse {}
+
+service Service {
+    rpc Run (Request) returns (Response);
+}
