@@ -1,6 +1,7 @@
 use anyhow::anyhow;
 use base64::Engine;
 use base64::engine::general_purpose;
+use bytes::Bytes;
 
 pub const fn to_byte<const N: usize, const D: u8>(input: &str) -> [u8; N] {
     let mut result = [D; N];
@@ -36,5 +37,19 @@ impl FromBase64 for String {
             .decode(self)
             .map_err(|e| anyhow!("decode failed err: {}", e))
             .map(|v| v)
+    }
+}
+
+pub trait ToJson {
+    fn deserialize<T>(&self) -> anyhow::Result<T>
+        where T: serde::de::DeserializeOwned;
+}
+
+impl ToJson for Bytes {
+    fn deserialize<T>(&self) -> anyhow::Result<T>
+    where
+      T: serde::de::DeserializeOwned,
+    {
+        Ok(serde_json::from_slice(&self.as_ref())?)
     }
 }
