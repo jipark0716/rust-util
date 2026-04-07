@@ -4,6 +4,7 @@ use crate::core::newtype::{AppKey, AppSecret, GrantType};
 use util::byte::ToJson;
 
 #[derive(Debug, serde::Deserialize)]
+#[allow(dead_code)]
 pub struct Token {
     access_token: AccessToken,
 }

@@ -7,6 +7,10 @@
       <sourceFolder url="file://$MODULE_DIR$/lib/util/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/app/cli/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/truefriend/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/httpcap/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/entity/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/rest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib/util-proc/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

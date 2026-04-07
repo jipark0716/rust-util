@@ -2,4 +2,4 @@
 resolver = "2"
 members = ["app/cli",
     "app/grpc"
-, "lib/truefriend", "lib/util"]
+, "app/httpcap", "lib/entity", "lib/rest", "lib/truefriend", "lib/util", "lib/util-proc"]
