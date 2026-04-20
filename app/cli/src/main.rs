@@ -22,10 +22,13 @@ enum Commands {
 async fn main() {
     let args = Command::parse();
 
-    match args.command {
+    let result = match args.command {
         Commands::Encrypt(c) => c.run(),
         Commands::Decrypt(c) => c.run(),
         Commands::AppSettingCompare(c) => c.run().await,
-    }
+    };
 
+    if let Err(e) = result {
+        println!("error: {}", e);
+    }
 }

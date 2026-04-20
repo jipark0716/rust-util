@@ -16,7 +16,7 @@ impl Args {
         Self { user, password }
     }
 
-    pub fn run(&self) {
+    pub fn run(&self) -> anyhow::Result<()> {
         let mut table = Table::new();
         table.set_header(vec!["ENV", "CONTENT"]);
 
@@ -49,5 +49,7 @@ impl Args {
 
 
         println!("{table}");
+
+        Ok(())
     }
 }

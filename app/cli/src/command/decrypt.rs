@@ -14,29 +14,31 @@ struct Auth {
 }
 
 impl Args {
-    pub fn run(&self) {
+    pub fn run(&self) -> anyhow::Result<()> {
         let mut table = Table::new();
         table.set_header(vec!["ENV", "USER", "PASSWORD"]);
 
         if let Ok(user) = self.decrypt(PROD_KEY_NAME)
         {
             table.add_row(vec!["prod", user.user.as_str(), user.password.as_str()]);
-            encrypt::Args::new(user.user, user.password).run();
+            encrypt::Args::new(user.user, user.password).run()?;
         }
 
         if let Ok(user) = self.decrypt(CBT_KEY_NAME)
         {
             table.add_row(vec!["cbt", user.user.as_str(), user.password.as_str()]);
-            encrypt::Args::new(user.user, user.password).run();
+            encrypt::Args::new(user.user, user.password).run()?;
         }
 
         if let Ok(user) = self.decrypt(DEV_KEY_NAME)
         {
             table.add_row(vec!["dev", user.user.as_str(), user.password.as_str()]);
-            encrypt::Args::new(user.user, user.password).run();
+            encrypt::Args::new(user.user, user.password).run()?;
         }
 
         println!("{table}");
+
+        Ok(())
     }
 
     fn decrypt(&self, env: &str) -> anyhow::Result<Auth> {
