@@ -9,7 +9,7 @@ use tracing_subscriber::util::SubscriberInitExt;
 use tracing_subscriber::{fmt, registry};
 use once_cell::sync::Lazy;
 use tokio::task::JoinHandle;
-use util::report;
+use util::{report};
 use util::clickhouse_batch_buffer::ClickhouseBatchExtensions;
 use crate::capture::HttpRequestEntity;
 

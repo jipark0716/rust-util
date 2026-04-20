@@ -1,14 +1,12 @@
 use comfy_table::Table;
 use util::byte::FromBase64;
 use util::encrypt::EncryptKey;
+use crate::command::{encrypt, CBT_KEY_NAME, DEV_KEY_NAME, PROD_KEY_NAME};
 
 #[derive(clap::Args, Debug)]
 pub struct Args {
     input: String,
 }
-
-const PROD_KEY_NAME: &str = "aes_bzmoffice_prod";
-const DEV_KEY_NAME: &str = "aes_bzmoffice_dev";
 
 struct Auth {
     user: String,
@@ -23,11 +21,19 @@ impl Args {
         if let Ok(user) = self.decrypt(PROD_KEY_NAME)
         {
             table.add_row(vec!["prod", user.user.as_str(), user.password.as_str()]);
+            encrypt::Args::new(user.user, user.password).run();
+        }
+
+        if let Ok(user) = self.decrypt(CBT_KEY_NAME)
+        {
+            table.add_row(vec!["cbt", user.user.as_str(), user.password.as_str()]);
+            encrypt::Args::new(user.user, user.password).run();
         }
 
         if let Ok(user) = self.decrypt(DEV_KEY_NAME)
         {
             table.add_row(vec!["dev", user.user.as_str(), user.password.as_str()]);
+            encrypt::Args::new(user.user, user.password).run();
         }
 
         println!("{table}");

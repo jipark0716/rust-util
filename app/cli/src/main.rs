@@ -1,7 +1,7 @@
 mod command;
 
 use clap::{Parser, Subcommand};
-use crate::command::{decrypt, encrypt};
+use crate::command::{decrypt, encrypt, app_setting_compare};
 
 #[derive(Parser)]
 #[command(name = "cli")]
@@ -14,15 +14,18 @@ struct Command {
 enum Commands {
     Encrypt(encrypt::Args),
     Decrypt(decrypt::Args),
+    AppSettingCompare(app_setting_compare::Args),
 }
 
 
-fn main() {
+#[tokio::main]
+async fn main() {
     let args = Command::parse();
 
     match args.command {
         Commands::Encrypt(c) => c.run(),
         Commands::Decrypt(c) => c.run(),
+        Commands::AppSettingCompare(c) => c.run().await,
     }
 
 }

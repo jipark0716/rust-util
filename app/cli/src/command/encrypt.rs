@@ -1,19 +1,21 @@
 use comfy_table::Table;
 use util::byte::ToBase64;
 use util::encrypt::EncryptKey;
+use crate::command::{CBT_KEY_NAME, DEV_KEY_NAME, PROD_KEY_NAME};
 
 #[derive(clap::Args, Debug)]
 pub struct Args {
-    #[arg(short, long)]
+    #[arg(long)]
     user: String,
-    #[arg(short, long)]
+    #[arg(long)]
     password: String,
 }
 
-const PROD_KEY_NAME: &str = "aes_bzmoffice_prod";
-const DEV_KEY_NAME: &str = "aes_bzmoffice_dev";
-
 impl Args {
+    pub fn new(user: String, password: String) -> Self {
+        Self { user, password }
+    }
+
     pub fn run(&self) {
         let mut table = Table::new();
         table.set_header(vec!["ENV", "CONTENT"]);
@@ -28,12 +30,21 @@ impl Args {
         ]);
 
         table.add_row(vec![
+            "cbt",
+            EncryptKey::new_env(CBT_KEY_NAME)
+              .unwrap()
+              .encrypt_cbc_pkcs7(format!("{}\t{}", self.user, self.password))
+              .to_base64()
+              .as_str()
+        ]);
+
+        table.add_row(vec![
             "dev",
             EncryptKey::new_env(DEV_KEY_NAME)
-                .unwrap()
-                .encrypt_cbc_pkcs7(format!("{}\t{}", self.user, self.password))
-                .to_base64()
-                .as_str()
+              .unwrap()
+              .encrypt_cbc_pkcs7(format!("{}\t{}", self.user, self.password))
+              .to_base64()
+              .as_str()
         ]);
 
 
