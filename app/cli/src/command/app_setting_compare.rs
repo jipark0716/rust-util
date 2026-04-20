@@ -73,7 +73,7 @@ impl Args {
 
         if all_diffs.is_empty() {
             println!(
-                "OK: all matching files have consistent keys within each directory ({} file(s), {} directorie(s)).",
+                "OK: all matching files have consistent keys within each directory ({} file(s), {} directories).",
                 files.len(),
                 files_by_dir.len()
             );
@@ -84,7 +84,7 @@ impl Args {
         }
 
         println!(
-            "DIFF: found {} key mismatch(es) across {} file(s) in {} directorie(s).",
+            "DIFF: found {} key mismatch(es) across {} file(s) in {} directories.",
             all_diffs.len(),
             files.len(),
             files_by_dir.len()
