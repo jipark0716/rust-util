@@ -1,7 +1,7 @@
 mod command;
 
 use clap::{Parser, Subcommand};
-use crate::command::{decrypt, encrypt, app_setting_compare};
+use crate::command::{decrypt, encrypt};
 
 #[derive(Parser)]
 #[command(name = "cli")]
@@ -14,7 +14,6 @@ struct Command {
 enum Commands {
     Encrypt(encrypt::Args),
     Decrypt(decrypt::Args),
-    AppSettingCompare(app_setting_compare::Args),
 }
 
 
@@ -25,7 +24,6 @@ async fn main() {
     let result = match args.command {
         Commands::Encrypt(c) => c.run(),
         Commands::Decrypt(c) => c.run(),
-        Commands::AppSettingCompare(c) => c.run().await,
     };
 
     if let Err(e) = result {

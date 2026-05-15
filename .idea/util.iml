@@ -11,6 +11,7 @@
       <sourceFolder url="file://$MODULE_DIR$/lib/entity/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/rest/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/util-proc/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/tunneling/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
