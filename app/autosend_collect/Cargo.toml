@@ -1,0 +1,10 @@
+[package]
+name = "autosend_collect"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+clickhouse = { version = "0.15", features = ["uuid", "time"] }
+serde = { version = "1.0.228", features = ["derive"] }
+time = "0.3.49"

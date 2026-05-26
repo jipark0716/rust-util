@@ -1,0 +1,11 @@
+[package]
+name = "attach"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "*"
+
+# cross build --release --target aarch64-unknown-linux-musl -p attach && cp ./target/aarch64-unknown-linux-musl/release/attach ~/workspace/etc/config/clickhouse-script/attach && chmod 777 ~/workspace/etc/config/clickhouse-script/attach

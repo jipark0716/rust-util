@@ -1,5 +1,13 @@
 [workspace]
 resolver = "2"
-members = ["app/cli",
-    "app/grpc"
-, "app/httpcap", "app/tunneling", "lib/entity", "lib/rest", "lib/truefriend", "lib/util", "lib/util-proc"]
+members = [
+    "app/cli",
+    "app/grpc",
+    "app/httpcap",
+    "app/playlist-manage",
+    "app/ch_function/attach",
+    "lib/entity",
+    "lib/rest",
+    "lib/util",
+    "lib/util-proc"
+]

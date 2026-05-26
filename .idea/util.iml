@@ -12,6 +12,10 @@
       <sourceFolder url="file://$MODULE_DIR$/lib/rest/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/lib/util-proc/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/app/tunneling/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/autosend_collect/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/ch_function/attach/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/ch_function/mysql/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/app/playlist-manage/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
